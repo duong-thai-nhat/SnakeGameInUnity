@@ -17,15 +17,25 @@ public class Snake : MonoBehaviour
 
     public State state;
 
+    private CountDown countdown;
+
     private Vector2 _direction = Vector2.right;
     private Vector2Int gridMoveDirection;
     private Vector2Int gridPosition;
-    public float speed = 0.3f;
     private float gridMoveTimer;
     private float gridMoveTimerMax;
     private List<Transform> _segments;
     public Transform segmentPrefab;
     public BoxCollider2D gridArea;
+
+    public int level = 1;
+    public Text levelText;
+
+    public float speed = 0.2f;
+    public Text speedText;
+
+    public int Goal = 10;
+    public Text GoalText;
 
     private int score;
     public Text scoreText;
@@ -36,6 +46,7 @@ public class Snake : MonoBehaviour
 
     private void Start()
     {
+
         gridPosition = new Vector2Int(0, 0);
         gridMoveTimerMax = speed;
         gridMoveTimer = gridMoveTimerMax;
@@ -45,6 +56,12 @@ public class Snake : MonoBehaviour
         _segments.Add(transform);
 
         state = State.Alive;
+
+        levelText.text = level.ToString();  
+
+        GoalText.text = Goal.ToString();
+
+        speedText.text = level.ToString();
 
         score = 0;
         scoreText.text = score.ToString();
@@ -167,7 +184,7 @@ public class Snake : MonoBehaviour
             score += 1;
             scoreText.text = score.ToString();
 
-            if(score == 10)
+            if(score == Goal)
             {
                 SetWinNotice(true);
                 state = State.Win;
@@ -200,5 +217,5 @@ public class Snake : MonoBehaviour
         LoseNoticeText.SetActive(true);
         WinNoticeText.SetActive(false);
         WinNotice.SetActive(isOpen);
-    }
+    }   
 }

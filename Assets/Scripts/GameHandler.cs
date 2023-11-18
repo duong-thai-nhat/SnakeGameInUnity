@@ -23,13 +23,18 @@ public class GameHandler : MonoBehaviour
         snake.SetWinNotice(false);
     }
 
+    public void NextLevel()
+    {
+        SceneManager.LoadScene(snake.level + 1);
+    }
+
     public void PlayAgainGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(snake.level);
     }
 
     public void Exit()
     {
         Application.Quit();
-    }  
+    }
 }

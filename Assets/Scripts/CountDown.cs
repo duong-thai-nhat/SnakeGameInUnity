@@ -5,8 +5,9 @@ using UnityEngine.UI;
 
 public class CountDown : MonoBehaviour
 {
+
     float currentTime = 0f;
-    float startingTime = 60f;
+    public float startingTime = 60f;
 
     public Text countdownText;
 
@@ -14,8 +15,8 @@ public class CountDown : MonoBehaviour
 
     private void Start()
     {
-        currentTime = startingTime;
         snake = GameObject.FindObjectOfType<Snake>();
+        currentTime = startingTime;
     }
 
     private void Update()
